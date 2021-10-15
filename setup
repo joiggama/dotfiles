@@ -1,0 +1,28 @@
+#!/bin/zsh
+
+cartridges insert dotfiles
+
+# packages
+sudo apt-get install \
+  fzf \
+  neovim \
+  silversearcher-ag
+
+# starship
+sudo sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- --force
+ln -s /cartridges/dotfiles/starship ~/.config/starship.toml
+
+# vim
+sudo sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+mkdir ~/.config/nvim
+ln -s /cartridges/dotfiles/nvim ~/.config/nvim/init.vim
+ln -s ~/.vimrc                  ~/.config/nvim/init.vim
+
+# tmux
+ln -s /cartridges/dotfiles/tmux ~/.tmux.conf
+
+# shell
+if [[ -z "$(grep /cartridges/dotfiles/shell ~/.zshrc)" ]]; then
+  echo "source /cartridges/dotfiles/shell" >> ~/.zshrc
+fi
