@@ -26,3 +26,5 @@ ln -s /cartridges/dotfiles/tmux ~/.tmux.conf
 if [[ -z "$(grep /cartridges/dotfiles/shell ~/.zshrc)" ]]; then
   echo "source /cartridges/dotfiles/shell" >> ~/.zshrc
 fi
+
+exec $SHELL
