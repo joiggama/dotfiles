@@ -10,21 +10,21 @@ sudo apt-get install -y \
 
 # starship
 sudo sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- --force
-ln -s ./starship ~/.config/starship.toml
+ln -s ~/dotfiles/starship ~/.config/starship.toml
 
 # vim
 sudo sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 mkdir ~/.config/nvim
-ln -s ./nvim ~/.config/nvim/init.vim
+ln -s ~/dotfiles/nvim ~/.config/nvim/init.vim
 ln -s ~/.vimrc                  ~/.config/nvim/init.vim
 
 # tmux
-ln -s ./tmux ~/.tmux.conf
+ln -s ~/dotfiles/tmux ~/.tmux.conf
 
 # shell
-if [[ -z "$(grep ./shell ~/.zshrc)" ]]; then
-  echo "source ./shell" >> ~/.zshrc
+if [[ -z "$(grep ~/dotfiles/shell ~/.zshrc)" ]]; then
+  echo "source ~/dotfiles/shell" >> ~/.zshrc
 fi
 
 exec $SHELL
