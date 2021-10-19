@@ -4,6 +4,7 @@
 sudo apt-get install -y \
   bat \
   fzf \
+  htop \
   neovim \
   silversearcher-ag
 
