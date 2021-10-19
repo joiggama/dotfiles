@@ -1,0 +1,8 @@
+command_timeout = 24000
+scan_timeout    = 200
+
+[gcloud]
+disabled = true
+
+[time]
+disabled = false

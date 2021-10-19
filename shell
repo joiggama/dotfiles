@@ -1,0 +1,9 @@
+#!/bin/zsh
+
+alias vim="nvim"
+alias edit!="nvim ~/.zshrc"
+alias reload!="source ~/.zshrc"
+
+export EDITOR="nvim"
+
+eval "$(starship init zsh)"
