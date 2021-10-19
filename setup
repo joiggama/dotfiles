@@ -20,6 +20,7 @@ ln -s ~/dotfiles/nvim ~/.config/nvim/init.vim
 ln -s ~/.vimrc                  ~/.config/nvim/init.vim
 
 # tmux
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ln -s ~/dotfiles/tmux ~/.tmux.conf
 
 # shell
