@@ -3,7 +3,7 @@
 cartridges insert dotfiles
 
 # packages
-sudo apt-get install \
+sudo apt-get install -y \
   fzf \
   neovim \
   silversearcher-ag
