@@ -10,7 +10,7 @@ sudo apt-get install -y \
 
 # starship
 sudo sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- --force
-ln -s ~/dotfiles/starship ~/.config/starship.toml
+ln -sf ~/dotfiles/starship ~/.config/starship.toml
 
 # vim
 sudo sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
