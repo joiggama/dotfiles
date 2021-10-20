@@ -25,7 +25,7 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ln -s ~/dotfiles/tmux ~/.tmux.conf
 
 # shell
-if [[ -z "$(grep ~/dotfiles/shell ~/.zshrc)" ]]; then
+if [[ -z "$(grep \~/dotfiles/shell ~/.zshrc)" ]]; then
   echo "source ~/dotfiles/shell" >> ~/.zshrc
 fi
 
