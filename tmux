@@ -10,11 +10,12 @@ bind e send-keys "$EDITOR ~/.tmux.conf" Enter # Edit configuration file
 bind r source-file ~/.tmux.conf               # Reload configuration file
 bind : command-prompt                         # Enter prompt mode
 
+# Disable base-index overrider for spin compat
 # Windows
-set -g base-index 1
+#set -g base-index 1
 
 # Panes
-set-window-option -g pane-base-index 1
+#set-window-option -g pane-base-index 1
 
 bind v split-window -h                        # Split vertically
 bind | split-window -h
