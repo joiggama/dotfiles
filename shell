@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+setopt interactivecomments
+
 alias vim="nvim"
 alias edit!="nvim ~/.zshrc"
 alias reload!="source ~/.zshrc"
