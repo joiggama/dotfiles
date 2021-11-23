@@ -9,6 +9,7 @@ bind ` send-prefix
 bind e send-keys "$EDITOR ~/.tmux.conf" Enter # Edit configuration file
 bind r source-file ~/.tmux.conf               # Reload configuration file
 bind : command-prompt                         # Enter prompt mode
+bind \\ send-keys -R \; clear-history         # Clear pane and history
 
 bind v split-window -h                        # Split vertically
 bind | split-window -h
