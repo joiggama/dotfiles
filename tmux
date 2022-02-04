@@ -37,4 +37,9 @@ set -g @plugin 'tmux-plugins/tmux-sensible'
 set -g @plugin 'wfxr/tmux-power'
 set -g @tmux_power_theme '#96bf48'
 
+
+if "test ! -d ~/.tmux/plugins/tpm" \
+   "run 'git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm && ~/.tmux/plugins/tpm/bin/install_plugins'"
+
+
 run '~/.tmux/plugins/tpm/tpm'

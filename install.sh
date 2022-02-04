@@ -24,11 +24,10 @@ ln -sf ~/dotfiles/nvim ~/.vimrc
 nvim -es -u ~/.config/nvim/init.vim -i NONE -c "PlugInstall" -c "qa"
 
 # tmux
+ln -sf ~/dotfiles/tmux ~/.tmux.conf
 if [[ ! -d ~/.tmux/plugins/tpm ]]; then
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-  ~/.tmux/plugins/tpm/bin/install_plugins
 fi
-ln -sf ~/dotfiles/tmux ~/.tmux.conf
 
 # shell
 if [[ -z "$(grep \~/dotfiles/shell ~/.zshrc)" ]]; then
