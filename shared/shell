@@ -1,0 +1,58 @@
+#!/bin/zsh
+
+setopt interactivecomments
+
+bindkey -e
+
+alias edit!="nvim ~/.zshrc"
+alias reload!="source ~/.zshrc"
+alias vim="nvim"
+
+export EDITOR="nvim"
+
+# TODO: Implement autocompletion via _fzf_complete
+function mux() {
+  subcommand=$1;
+  project=$2
+
+  case $subcommand in
+    ls|list)
+      _mux_projects_list
+      ;;
+    up|start)
+      tmuxinator start ${project:-$(_mux_projects_finder)}
+      ;;
+    down|stop)
+      tmuxinator stop ${project:-$(_mux_projects_finder)}
+      ;;
+    edit|open)
+      tmuxinator $subcommand ${project:-$(_mux_projects_finder)}
+      ;;
+    *)
+      tmuxinator "$@"
+      ;;
+  esac
+}
+
+function _mux_projects_list() {
+  basename -s .yml $(ls -1 ~/.config/tmuxinator)
+}
+
+function _mux_projects_finder() {
+  _mux_projects_list | fzf --prompt="Project:" "$@"
+}
+
+function _fzf_complete_mux() {
+  _fzf_complete --prompt="project:" -- "$@" < <(
+    _mux_projects_list
+  )
+}
+
+export FZF_COMPLETION_TRIGGER=":"
+function _fzf_complete_mosh() {
+  _fzf_complete --prompt="instance:" --  "$@" < <(
+    spin list --output fqdn --no-header
+  )
+}
+
+eval "$(starship init zsh)"

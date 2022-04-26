@@ -58,30 +58,32 @@ set synmaxcol=240         " Cap syntax highlighting to 120 columns
 " Mapping - Meta
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <leader>ve :edit ~/.vimrc<cr>
-map <leader>vs :source ~/.vimrc<cr>
+map <leader>e :edit ~/.vimrc<cr>
+map <leader>s :source ~/.vimrc<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Mapping - junegunn/vim-plug
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <leader>pi :source ~/.vimrc <bar> :PlugInstall<cr>
-map <leader>ps :source ~/.vimrc <bar> :PlugStatus<cr>
-map <leader>pc :source ~/.vimrc <bar> :PlugClean<cr>
+map <leader>i :source ~/.vimrc <bar> :PlugInstall<cr>
+map <leader>p                  <bar> :PlugStatus<cr>
+map <leader>c :source ~/.vimrc <bar> :PlugClean<cr>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 call plug#begin('~/.vim/plugged')
-  Plug 'altercation/vim-colors-solarized'
+  Plug 'sickill/vim-monokai'
   Plug 'airblade/vim-gitgutter'
+  Plug 'aklt/plantuml-syntax'
+  Plug 'altercation/vim-colors-solarized'
+  Plug 'baskerville/bubblegum'
   Plug 'benekastah/neomake'
   Plug 'bronson/vim-trailing-whitespace'
   Plug 'christoomey/vim-tmux-navigator'
-  "Plug 'vim-airline/vim-airline'
-  "Plug 'vim-airline/vim-airline-themes'
   Plug 'editorconfig/editorconfig-vim'
   Plug 'jparise/vim-graphql'
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install' }
@@ -94,6 +96,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'mattn/webapi-vim'
   Plug 'mzlogin/vim-markdown-toc'
   Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+  Plug 'preservim/vimux'
   Plug 'prettier/vim-prettier'
   Plug 'robertYan/monokai-soda'
   Plug 'scrooloose/nerdcommenter'
@@ -112,15 +115,9 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-sensible'
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-unimpaired'
-  Plug 'baskerville/bubblegum'
-  "Plug 'MaxMEllon/vim-jsx-pretty'
-  "Plug 'chrisbra/csv.vim'
-  "Plug 'dart-lang/dart-vim-plugin'
-  "Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-  "Plug 'garbas/vim-snipmate' | Plug 'MarcWeber/vim-addon-mw-utils' | Plug 'tomtom/tlib_vim'
-  "Plug 'jiangmiao/auto-pairs'
-  "Plug 'slim-template/vim-slim'
-  "Plug 'takac/vim-hardtime'
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+  Plug 'vim-test/vim-test'
 call plug#end()
 
 
@@ -129,7 +126,6 @@ call plug#end()
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:hardtime_default_on = 1
-let g:ruby_path = system('echo $HOME/.rbenv/shims')
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin Mapping - benakastah/neomake
@@ -142,7 +138,6 @@ autocmd! BufWritePost * Neomake
 " Plugin Mapping - bronson/vim-trailing-whitespace
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <leader>fw :FixWhitespace<cr>
 autocmd BufWritePre * :FixWhitespace
 
 
@@ -152,8 +147,10 @@ autocmd BufWritePre * :FixWhitespace
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " List and select from file list
 map <leader><tab> :GFiles<cr>
+map <leader>f :Files<cr>
+map <leader>g :GFiles?<cr>
 " List and select from mappings list
-map <leader>lm <plug>(fzf-maps-n)
+map <leader>? <plug>(fzf-maps-n)
 " Insert mode completion
 imap <leader>f<tab> <plug>(fzf-complete-file)
 
@@ -231,7 +228,8 @@ set signcolumn=yes
 " Config - Styling
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-colorscheme bubblegum-256-dark
+"colorscheme bubblegum-256-dark
+colorscheme monokai
 "colorscheme solarized
 "set background=light
 "let g:airline_theme='bubblegum'
@@ -242,3 +240,10 @@ nnoremap <leader><leader> :Buffers<CR>
 nnoremap ,, <C-^>
 
 set colorcolumn=121
+
+nmap <silent> <leader>t :TestNearest<CR>
+nmap <silent> <leader>T :TestFile<CR>
+nmap <silent> <leader>l :TestLast<CR>
+"nmap <silent> <leader>g :TestVisit<CR>
+
+let test#strategy = "vimux"

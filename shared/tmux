@@ -1,9 +1,14 @@
 # General
 set -g mode-keys vi
 
+set -g base-index 1
+setw -g pane-base-index 1
+
 # Bindings
 set -g prefix `
 bind ` send-prefix
+
+bind o rotatew
 
 bind e send-keys "$EDITOR ~/.tmux.conf" Enter    #  Edit configuration file
 bind r source-file ~/.tmux.conf                  #  Reload configuration file
