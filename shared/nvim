@@ -109,6 +109,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-eunuch'
   Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-rails'
+  Plug 'tpope/vim-projectionist'
   Plug 'tpope/vim-rake'
   Plug 'tpope/vim-repeat'
   Plug 'tpope/vim-rsi'
@@ -125,7 +126,8 @@ call plug#end()
 " Plugin Config
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:hardtime_default_on = 1
+" tpope/vim-{rails,projectionist} prompt for alternate/related file confirmation
+set confirm
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin Mapping - benakastah/neomake
